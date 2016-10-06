@@ -1,0 +1,7 @@
+*.pyc
+*.log
+*.xml
+.idea/.name
+*.iml
+settings.py
+

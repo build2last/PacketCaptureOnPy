@@ -3,7 +3,7 @@ packet capture with Python on Windows, analyse
 
 ProjectJournal
 ---
-#### data struct of the decoded pcap info
+#### [data struct](https://github.com/build2last/PacketCaptureOnPy/blob/master/web/pcapdisplay/models.py) of the decoded pcap info
 1. time	datetime
 2. ip	string
 3. srcip string
