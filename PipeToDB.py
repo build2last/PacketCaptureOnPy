@@ -50,7 +50,7 @@ def pcapToMySQL(pcap_list):
 
 
 def exe():
-    pcap_list = dpt.get_packets_list("D:\pcap.pcap")
+    pcap_list = dpt.get_packets_list("D:\pcap2.pcap")
     pcapToMySQL(pcap_list)
 if __name__ == "__main__":
     exe()

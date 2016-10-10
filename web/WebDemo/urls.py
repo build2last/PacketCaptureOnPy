@@ -20,4 +20,7 @@ from django.contrib import admin
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', 'pcapdisplay.views.home'),
+    url(r'^distribution/', 'pcapdisplay.views.display'),
+    url(r'^api/time/$','pcapdisplay.views.time_distribution_json'),
+    url(r'^api/geography/$','pcapdisplay.views.geography_distribution_json'),
 ]
