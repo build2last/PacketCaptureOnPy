@@ -6,7 +6,65 @@
 	<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>  
     <script src="http://code.jquery.com/jquery-latest.js"></script>  
 	<script>
+    function showpie()
+    {
+    // 添加http内容分布饼状图
+    dataset = new Array();
+    piename = new Array();
+    $.ajaxSettings.async = false;
+    $.getJSON("http://localhost:8080/api/content/", function(piejson){
+        for(var i=0;i<piejson.data.length;i++){
+            dataset[i] = piejson.data[i].count;
+            piename[i] = piejson.data[i].type;
+        }
+    });	
+        var width = 400;
+		var height = 400;
+		var svg = d3.select("body")
+					.append("svg")
+					.attr("width", width)
+					.attr("height", height);
+		
+		var pie = d3.layout.pie();
+
+		var piedata = pie(dataset);
+		var outerRadius = 150;	//外半径
+		var innerRadius = 0;	//内半径，为0则中间没有空白
+
+		var arc = d3.svg.arc()	//弧生成器
+					.innerRadius(innerRadius)	//设置内半径
+					.outerRadius(outerRadius);	//设置外半径
+		
+		var color = d3.scale.category10();
+		
+		var arcs = svg.selectAll("g")
+					  .data(piedata)
+					  .enter()
+					  .append("g")
+					  .attr("transform","translate("+ (width/2) +","+ (width/2) +")");
+					  
+		arcs.append("path")
+			.attr("fill",function(d,i){
+				return color(i);
+			})
+			.attr("d",function(d){
+				return arc(d);
+			});
+		
+		arcs.append("text")
+			.attr("transform",function(d){
+				return "translate(" + arc.centroid(d) + ")";
+			})
+			.attr("text-anchor","middle")
+			.text(function(d,i){
+				return piename[i] + ' ' + d.data;
+			});
+    }
     function display(type){
+    if(type != "http")
+    {
+        document.getElementById("httpbtn").style.display="none";
+    }
 	//画布大小
 	var width = 1200;
 	var height = 400;
@@ -21,10 +79,10 @@
 	var padding = {left:60, right:30, top:20, bottom:20};
     
     var dataset;
-	//定义一个数组 getJSON不是同步的，要保证数据正常显示，得用同步方式获取数据才能正确反馈。
+	//定义一个数组 getpiejsoN不是同步的，要保证数据正常显示，得用同步方式获取数据才能正确反馈。
     $.ajaxSettings.async = false;
-     $.getJSON("http://localhost:8080/api/time/?type="+type, function(json){
-        dataset = json ;
+     $.getJSON("http://localhost:8080/api/time/?type="+type, function(hisjson){
+        dataset = hisjson ;
     });	
 	//x轴的比例尺
 	var xScale = d3.scale.ordinal()
@@ -130,6 +188,7 @@
         .append("text")  
         .text("HTTP包")  
         .attr("transform","translate(15,"+ padding.top +")");
+           
 }
 </script>
 <style>
@@ -156,8 +215,8 @@
 </style>
 </head> 
 
-<body onload="display('all')">  
-<button onclick="display('http')" value='Only Http'>Only Http</button>
+<body onload="display('http');showpie()">  
+<button onclick="display('all')"  id="httpbtn">Display All</button>
 
 </body>  
 </html>  

@@ -23,4 +23,5 @@ urlpatterns = [
     url(r'^distribution/', 'pcapdisplay.views.display'),
     url(r'^api/time/$','pcapdisplay.views.time_distribution_json'),
     url(r'^api/geography/$','pcapdisplay.views.geography_distribution_json'),
+    url(r'^api/content/$','pcapdisplay.views.content_distribution_json'),
 ]
