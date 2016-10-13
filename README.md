@@ -2,7 +2,7 @@
 packet capture with Python on Windows, analyse
 ---
 ### 用到的工具
-* (wireshark)[https://www.wireshark.org/download.html]: get pcap file
+* [wireshark](https://www.wireshark.org/download.html): get pcap file
 * winpcap:low level interface to elternet module
 * dpkt:python to decode pcap file
   * Pip install dpkt
