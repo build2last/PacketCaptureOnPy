@@ -1,5 +1,15 @@
 # PacketCaptureOnPy
 packet capture with Python on Windows, analyse
+---
+### 用到的工具
+* (wireshark)[https://www.wireshark.org/download.html]: get pcap file
+* winpcap:low level interface to elternet module
+* dpkt:python to decode pcap file
+  * Pip install dpkt
+  
+#### Create database in mysql
+> CREATE DATABASE pcap DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+
 
 ProjectJournal
 ---
@@ -22,10 +32,6 @@ ProjectJournal
 1. 时间：流量（包的个数）在一天二十四小时上的分布，在一周时间上的分布
 2. 空间：ip 地址流向
 3. 内容：文本和图片，网站域名划分
-
-
-#### database in mysql
-> CREATE DATABASE pcap DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
 
 "东西放到数据库里面了，再见！喝奶去了。"
 ****
