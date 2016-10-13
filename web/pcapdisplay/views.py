@@ -11,14 +11,14 @@ from .models import package
 
 
 def display(request):
-    return render(request, 'pcapdisplay/display.html')
+    return render(request, 'pcapdisplay/host_rank.html')
 
 delta = datetime.timedelta(days=101)    # 展示日期区间
 # 流量在时间的分布 API
 def time_distribution_json(request):
     re_type = request.GET.get('type')
     if re_type == "all":
-        packs = package.objects.all()
+        packs = package.objects.exclude(dst_ip__exact='192.168.1.105')
     elif re_type == "http":
         packs = package.objects.filter(time__gte=datetime.date.today()-delta).exclude(url__exact='')
     else:
@@ -61,4 +61,42 @@ def content_distribution_json(request):
         ret_str.append(dict(type=it,count=data_type_dic[it]))
     api_data["data"] =ret_str
     return HttpResponse(json.dumps(api_data))
-    
+ 
+# distrbution by host name ,域名流量排序
+def host_distribution_page(request):
+     packs = package.objects.filter(time__gte=datetime.date.today()-delta).exclude(url__exact='')
+     host_name_dic = {}
+     for ipa in packs:
+        host_name = ipa.url
+        ip_time = ipa.time.strftime("%Y-%m-%d %H:%M:%S")
+        #if host_name.count('.')>=2:
+        #    host_name = '.'.join(ipa.url.split('.')[1:])
+        if host_name in host_name_dic:
+            host_name_dic[host_name]["count"] += 1
+            if  ip_time > host_name_dic[host_name]["lastvisit"]:
+                host_name_dic[host_name]["lastvisit"] =  ip_time
+        else: host_name_dic[host_name] = (dict(count=1,lastvisit=ip_time, host_url=host_name))
+     re_list = []
+     for i in host_name_dic:
+        re_list.append(host_name_dic[i])
+     # bubble sort by visit times
+     i = len(re_list) - 1
+     while(i>=0):
+        j = 0
+        changed = False
+        while(j<i):
+            if re_list[j]["count"] < re_list[j+1]["count"]: 
+                temp = dict(re_list[j])
+                re_list[j] = re_list[j+1]
+                re_list[j+1] = temp
+                changed = True
+            j+=1
+        if not changed:
+             break
+        else:
+            i-=1
+     return render(request, 'pcapdisplay/host_rank.html',
+          {
+             "re_list": re_list,
+          }
+      )

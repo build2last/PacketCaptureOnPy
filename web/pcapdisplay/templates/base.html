@@ -1,0 +1,49 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <!--
+        * author:    liu kun
+        * edit date: 2016-10
+    -->
+	    <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="http://apps.bdimg.com/libs/bootstrap/3.3.0/css/bootstrap.min.css">
+        <title>Cute流量分析</title>
+        <style>
+            .axis path,
+            .axis line{
+                fill: none;
+                stroke: black;
+                shape-rendering: crispEdges;
+            }
+
+            .axis text {
+                font-family: sans-serif;
+                font-size: 11px;
+            }
+
+            .MyRect {
+                fill: steelblue;
+            }
+
+            .MyText {
+                fill: white;
+                text-anchor: middle;
+            }
+        </style>
+  </head>
+  <body>
+
+    {% block navbar %}{% endblock navbar %}
+    {% block content %}{% endblock content %}
+    
+    <!-- footer start -->
+    <footer style="bottom: 0; margin-top: 20px;">
+        <p align="center">All Rights Reserved {% now "Y" %}  刘坤</p>
+    </footer>
+    <!-- footer end -->
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="http://apps.bdimg.com/libs/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+  </body>
+
+</html>

@@ -1,0 +1,67 @@
+﻿{% extends "base.html" %}
+{% block navbar_css %}
+<style>
+    html {
+        height: 100%;
+    }
+    body {
+        min-height: 100%;
+        position: relative;
+        padding-bottom: 74px;
+        padding-top: 74px;
+    }
+    /* -----for navbar----- */
+    .navbar {
+        background: #FFF8DC;
+    }
+    /* -----for footer----- */
+    #site_footer {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        overflow: hidden;
+        height: 74px;
+        color: #999;
+    }
+    #site_footer .container {
+        padding-bottom: 10px;
+    }
+    #site_footer .container .footer_text {
+        padding-top: 18px;
+        color: black;
+        font-size: 15px;
+    }
+    #site_footer p {
+        margin-top: 10px;
+        margin-bottom: 10px;
+        font-size: 15px;
+    }
+    #site_navbar .container a {
+        font-size: 15px;
+        color: black;
+        background: #FFEC8B;
+    }
+    #site_navbar .container li.active a {
+        background: #FFC125;
+    }
+</style>
+{% endblock navbar_css %}
+{% block navbar %}
+<div class="container">
+	<div class="row clearfix">
+		<div class="col-md-12 column">
+			<div class="jumbotron">
+				<h1><font face="微软雅黑" color="#8B008B">
+					HTTP FlOW RANK
+                    </font>
+                </h1>
+				<p>
+					感觉萌萌哒
+				</p>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock navbar %}
+
