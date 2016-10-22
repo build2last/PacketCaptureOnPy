@@ -1,10 +1,10 @@
 # PacketCaptureOnPy
-packet capture with Python on Windows, analyse
+packet capture with Python on Windows, then you can use the django show the packet distribution.
 ---
 ### 用到的工具
 * [wireshark](https://www.wireshark.org/download.html): get pcap file
-* winpcap:low level interface to elternet module
-* dpkt:python to decode pcap file
+* [winpcap](https://github.com/build2last/PacketCaptureOnPy/blob/master/%E9%A1%B9%E7%9B%AE%E5%AE%89%E8%A3%85%E5%8C%85/WinPcap_4_1_2.exe):low level interface to elternet module
+* [dpkt](https://github.com/build2last/PacketCaptureOnPy/blob/master/%E9%A1%B9%E7%9B%AE%E5%AE%89%E8%A3%85%E5%8C%85/pcap-1.1.win32-py2.7.msi):python to decode pcap file
   * Pip install dpkt
   
 #### Create database in mysql
@@ -33,7 +33,7 @@ ProjectJournal
 2. 空间：ip 地址流向
 3. 内容：文本和图片，网站域名划分
 
-"东西放到数据库里面了，再见！喝奶去了。"
+"东西放到数据库里面，作者要喝奶去了。"
 ****
 2016-10-07
 
