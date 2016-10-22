@@ -6,7 +6,7 @@ packet capture with Python on Windows, then you can use the django show the pack
 * [winpcap](https://github.com/build2last/PacketCaptureOnPy/blob/master/%E9%A1%B9%E7%9B%AE%E5%AE%89%E8%A3%85%E5%8C%85/WinPcap_4_1_2.exe): low level interface to elternet module
 * [dpkt](https://github.com/build2last/PacketCaptureOnPy/blob/master/%E9%A1%B9%E7%9B%AE%E5%AE%89%E8%A3%85%E5%8C%85/pcap-1.1.win32-py2.7.msi): A python library to decode pcap file
   * Pip install dpkt
-* django: here to help create tables in database and make some analyse upon the database with a demo to display the packet distribution among urls, time-hour and types.
+* django: here to help create tables in database and make some analyse upon the database with a demo to display the packet distribution among urls, 24-hours and types.
  * pip install django
   
 #### Create database in mysql
@@ -15,7 +15,7 @@ packet capture with Python on Windows, then you can use the django show the pack
 
 ProjectJournal
 ---
-#### [data struct](https://github.com/build2last/PacketCaptureOnPy/blob/master/web/pcapdisplay/models.py) of the decoded pcap info
+#### [Data structure](https://github.com/build2last/PacketCaptureOnPy/blob/master/web/pcapdisplay/models.py) of the decoded pcap info
 1. time	datetime
 2. ip	string
 3. srcip string
@@ -25,7 +25,8 @@ ProjectJournal
 7. len int
 8. src_mac string
 9. dst_mac string
-10.pcap_id
+10. pcap_id
+...
 
 ****
 2016-10-06
