@@ -3,9 +3,11 @@ packet capture with Python on Windows, then you can use the django show the pack
 ---
 ### 用到的工具
 * [wireshark](https://www.wireshark.org/download.html): get pcap file
-* [winpcap](https://github.com/build2last/PacketCaptureOnPy/blob/master/%E9%A1%B9%E7%9B%AE%E5%AE%89%E8%A3%85%E5%8C%85/WinPcap_4_1_2.exe):low level interface to elternet module
-* [dpkt](https://github.com/build2last/PacketCaptureOnPy/blob/master/%E9%A1%B9%E7%9B%AE%E5%AE%89%E8%A3%85%E5%8C%85/pcap-1.1.win32-py2.7.msi):python to decode pcap file
+* [winpcap](https://github.com/build2last/PacketCaptureOnPy/blob/master/%E9%A1%B9%E7%9B%AE%E5%AE%89%E8%A3%85%E5%8C%85/WinPcap_4_1_2.exe): low level interface to elternet module
+* [dpkt](https://github.com/build2last/PacketCaptureOnPy/blob/master/%E9%A1%B9%E7%9B%AE%E5%AE%89%E8%A3%85%E5%8C%85/pcap-1.1.win32-py2.7.msi): A python library to decode pcap file
   * Pip install dpkt
+* django: here to help create tables in database and make some analyse upon the database with a demo to display the packet distribution among urls, time-hour and types.
+ * pip install django
   
 #### Create database in mysql
 > CREATE DATABASE pcap DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
